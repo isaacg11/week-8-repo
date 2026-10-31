@@ -8,7 +8,7 @@ import "./Auth.css";
 function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  //Your Code Here
+  const dispatch = useDispatch();
   const hasNavigated = useRef(false);
 
   const { token, loading, error } = useSelector((state) => state.auth);
@@ -19,7 +19,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //Your Code Here
+    await dispatch(loginUser(form));
   };
 
   useEffect(() => {

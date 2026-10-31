@@ -2,11 +2,12 @@ import { Navbar, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode } from "../../reducers/themeSlice";
+import { logoutUser } from "../../reducers/authSlice";
 import "./Header.css";
 
 function Header({ onToggleSidebar }) {
   const navigate = useNavigate();
-  // Your Code Here
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.user);
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -20,7 +21,7 @@ function Header({ onToggleSidebar }) {
   };
 
   const handleLogout = () => {
-    //Your Code Here
+    dispatch(logoutUser());
     navigate("/login");
   };
 
